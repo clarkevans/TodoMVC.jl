@@ -1,0 +1,9 @@
+name = "TodoMVC"
+uuid = "af6ef7a7-33f9-46f1-ae2c-04d0c5297966"
+authors = ["Clark C. Evans <cce@clarkevans.com>"]
+version = "0.1.0"
+
+[deps]
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Hiccup = "9fb69e20-1954-56bb-a84f-559cc56a8ff7"
+Mux = "a975b10e-0019-58db-a62f-e48ff68538c9"
