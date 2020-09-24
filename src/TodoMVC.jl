@@ -18,8 +18,4 @@ const ROUTER = HTTP.Router()
 HTTP.@register(ROUTER, "GET", "/", homepage)
 HTTP.@register(ROUTER, "POST", "/clicked", clicked)
 
-function serve()
-    HTTP.serve(ROUTER, "127.0.0.1", 8080)
-end
-
 end
