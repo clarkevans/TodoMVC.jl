@@ -5,7 +5,10 @@ with server-side view generation using [htmx.js](https://htmx.org) and
 [Hyperscript.jl](https://github.com/yurivish/Hyperscript.jl). This file
 serves as both documentation and a regression test.
 
-    using TodoMVC
+    using TodoMVC: wget, post
 
-    TodoMVC.homepage 
-    #-> TodoMVC.homepage
+    wget("/")
+    #-> …<button hx-post="/clicked" hx-swap="outerHTML">…
+
+    post("/clicked")
+    #-> <div>I&#39;m clicked</div>
