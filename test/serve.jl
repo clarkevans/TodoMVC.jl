@@ -2,10 +2,17 @@
 using HTTP
 using Sockets
 using Revise
+include("live_server.jl")
 
 using TodoMVC: ROUTER
 
-HTTP.listen(request -> begin
-       Revise.revise()
-       Base.invokelatest(HTTP.handle, ROUTER, request)
-end, Sockets.localhost, 8080, verbose=true)
+function serve(server_socket)
+    HTTP.serve(ROUTER; server=server_socket, verbose=true)
+end
+
+@sync begin
+    token = CancelToken()
+    @async run_server(serve, token)
+    readline()
+    close(token)
+end
