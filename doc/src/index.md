@@ -8,7 +8,18 @@ serves as both documentation and a regression test.
     using TodoMVC: wget, post
 
     wget("/")
-    #-> …<button hx-post="/clicked" hx-swap="outerHTML">…
+    #=>
+    <html><body><script src="https://unpkg.com/htmx.org@0.1.2"></script>
+    <button hx-post="/clicked" hx-swap="outerHTML">Click Me</button>
+    =#
 
     post("/clicked")
-    #-> <div>I&#39;m clicked</div>
+    #-> <div>I&apos;m clicked</div>
+
+We can create server-side objects to test them.
+
+    using TodoMVC: Todo
+
+    Todo("Testing")
+    #-> Todo("Testing", TodoMVC.ACTIVE, UUID(…
+
