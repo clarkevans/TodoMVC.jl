@@ -3,20 +3,18 @@ module TodoMVC
 using HTTP
 import HTTP: Request, Response, handle
 
-using Hyperscript
-@tags html body script button div
+using HypertextLiteral
 
-Response(status::Int, node::Hyperscript.Node) = Response(status,
+Response(status::Int, htl::HypertextLiteral.Result) = Response(status,
   [SubString("Content-Type") => SubString("text/html; charset=utf-8")];
-  body=HTTP.bytes(string(node)))
-Response(node::Hyperscript.Node) = Response(200, node)
+  body=HTTP.bytes(string(htl)))
+Response(node::HypertextLiteral.Result) = Response(200, htl)
 
-homepage(req::HTTP.Request) =
-    HTTP.Response(200, html(body(
-     script(src="https://unpkg.com/htmx.org@0.1.2"),
-     button(hxPost="/clicked", hxSwap="outerHTML", "Click Me"))))
+homepage(req::HTTP.Request) = HTTP.Response(200, @htl("""
+     <html><body><script src="https://unpkg.com/htmx.org@0.1.2"></script>
+     <button hx-post="/clicked" hx-swap="outerHTML">Click Me</button>"""))
 
-clicked(req::HTTP.Request) = Response(div("I'm clicked"))
+clicked(req::HTTP.Request) = HTTP.Response(200, htl"<div>I'm clicked</div>")
 
 const ROUTER = HTTP.Router()
 HTTP.@register(ROUTER, "GET", "/", homepage)

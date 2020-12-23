@@ -1,11 +1,11 @@
 name = "TodoMVC"
 uuid = "af6ef7a7-33f9-46f1-ae2c-04d0c5297966"
 authors = ["Clark C. Evans <cce@clarkevans.com>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
-Hyperscript = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
+HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 Sockets = "6462fe0b-24de-5631-8697-dd941f90decc"
 
 [extras]
