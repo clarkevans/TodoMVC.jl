@@ -14,8 +14,7 @@ using HypertextLiteral
     Mux.notfound())
 
 # for local testing
-loopback(req::Request) =
-    read(IOBuffer(handle(Mux.http_handler(APP), req).body), String)
+loopback(req::Request) = String(TodoMVC.APP.warez(req).body)
 wget(url) = println(loopback(Request("GET", url)))
 post(url) = println(loopback(Request("POST", url)))
 
